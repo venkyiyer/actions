@@ -1,5 +1,5 @@
 name: test project
-on: push
+on: [push, workflow_dispatch] # if we want multiple triggers, we can put all the triggers in the list: [push, pull, etc.]
 jobs:
   test:
     runs-on: ubuntu-latest

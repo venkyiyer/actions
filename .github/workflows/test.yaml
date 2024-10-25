@@ -9,9 +9,8 @@ jobs:
       - name: Install node JS
         uses: actions/setup-node@v3 # to use an already created action. These are available in the github documentation
         with: 
-          node-version:18 # with keyword is used for some extra configurations. By default node 16 is installed. But we want to install 18
+          node-version: 18 # with keyword is used for some extra configurations. By default node 16 is installed. But we want to install 18
       - name: Install all the dependencies
         run: npm ci
       - name: Run all the test scripts
         run: npm test
-        

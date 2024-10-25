@@ -16,6 +16,7 @@ jobs:
         run: npm test
 
   deploy:
+    needs: test # This ensures that only after the test job is finished, the deploy job will start executing. for mutiple jobs to finish: [j1, j2, ...]
     runs-on: ubuntu-latest
     steps:
     - name: Get code from repo # Remember: as you are running it on some ubuntu machine, you will have to download the code. The machine won't have the code

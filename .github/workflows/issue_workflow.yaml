@@ -4,5 +4,5 @@ jobs:
   issue trigger:
     runs-on: ubuntu-latest
     steps:
-      name: issue trigger
-      run: echo "${{toJSON(github)}}"
+      - name: issue trigger
+        run: echo "${{toJSON(github)}}"

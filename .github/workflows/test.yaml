@@ -7,7 +7,7 @@ jobs:
       - name: Get code from repo # Remember: as you are running it on some ubuntu machine, you will have to download the code. The machine won't have the code
         uses: actions/checkout@v3 # to use an already created action
       - name: Install node JS
-        uses: actions/setup-node@v3 # to use an already created action. These are available in the github documentation
+        uses: actions/setup-node@v4 # to use an already created action. These are available in the github documentation
         with: 
           node-version: 20 # with keyword is used for some extra configurations. By default node 16 is installed. But we want to install 18
       - name: Install all the dependencies

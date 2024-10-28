@@ -9,10 +9,10 @@ jobs:
       # - name: Install node
       #   uses: actions/setup-node@v3
       - name: Install the dependencies
-        uses: npm ci
+        run: npm ci
       - name: Run the linting script
-        uses: npm run lint
-        run: echo 'Linting script successful!'
+        run: npm run lint
+        run: echo 'Linting job over!'
   
   testing:
     needs: linting

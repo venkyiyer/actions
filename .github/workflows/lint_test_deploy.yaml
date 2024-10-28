@@ -21,10 +21,9 @@ jobs:
       - name: Get code from repo
         uses: actions/checkout@v3
       - name: Install the dependencies
-        uses: npm ci
+        run: npm ci
       - name: Run testing script
-        use: npm run test
-        run: echo 'Testing script successful!'
+        run: npm run test
   
   deployment:
     needs: testing
@@ -33,6 +32,6 @@ jobs:
       - name: Get code from repo
         uses: actions/checkout@v3
       - name: Install the dependencies
-        uses: npm ci
+        run: npm ci
       - name: Run the build script
         run: echo 'Deploying the code....'

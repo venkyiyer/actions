@@ -1,3 +1,4 @@
+# Artifacts are log files, app binaries, etc. 
 name: artifact saving
 on: 
   push:

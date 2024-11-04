@@ -1,4 +1,4 @@
-name: lint_test_deploy
+name: artifact saving
 on: 
   push:
     branches: 
@@ -27,7 +27,13 @@ jobs:
         run: npm ci
       - name: Build website
         run: npm run build
-  
+      - name: upload artifacts # This step is used to store some artifact that is generated when we build the code
+        uses: actions/upload-artifact@v3
+        with:
+          name: My demo artifacts
+          path: |
+            dist
+            package.json
   deploy: 
   needs: buid
   runs-on: ubuntu-latest

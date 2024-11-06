@@ -41,7 +41,7 @@ jobs:
         id: publish
         run: find dist/assets/*.js -type f -execdir echo 'some-file-name={}' >> GITHUB_OUTPUT ';' # To find the js file name in the given path and display the name of the js file
       - name: upload artifacts # This step is used to store some artifact that is generated when we build the code. This can be manually downloaded on click
-        uses: actions/upload-artifact@v3 # To upload the artifacts that can be downloaded on button click
+        uses: actions/upload-artifact@v3 # To upload the artifacts that can be downloaded on button click on the actions tab itself
         with:
           name: My demo artifacts
           path: |

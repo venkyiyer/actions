@@ -42,7 +42,7 @@ jobs:
             - name: Get code
               uses: actions/checkout@v3
             - name: Demo command
-              uses: echo "Deployment in progress!"
+              run: echo "Deployment in progress!"
 
 
 

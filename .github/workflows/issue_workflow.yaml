@@ -1,8 +1,0 @@
-name: issue workflow
-on: issues
-jobs:
-  issue_trigger:
-    runs-on: ubuntu-latest
-    steps:
-      - name: issue trigger
-        run: echo "${{toJSON(github.event.issue.id)}}"

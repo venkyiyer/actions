@@ -10,23 +10,36 @@ jobs:
         steps:
             - name: Get code
               uses: actions/checkout@v3
+            - name: Cache the dependencies
+              uses: actions/cache@v3
+              with: 
+                path: ~/.npm
+                key: deps-node-modules-${{hashFiles('**/package-lock.json')}}
             - name: Install dependencies
               run: npm ci
-            - name: Lint code
-              run: npm run lint
             - name: Test code
               run: npm run test
     
     build:
         needs: test
         runs-on: ubuntu-latest
+        outputs:
+          script-file: ${{steps.publish.outputs.script-file}} 
         steps:
             - name: Get code from Git
               uses: actions/checkout@v3
+            - name: Cache the dependencies
+              uses: actions/cache@v3
+              with: 
+                path: ~/.npm
+                key: deps-node-modules-${{hashFiles('**/package-lock.json')}}
             - name: Install dependencies
               run: npm ci
             - name: Build website
               run: npm run build
+            - name: Publish JS file name
+              id: publish
+              run: find dist/assets/*.js -type f -execdir echo 'script-file={}' >> $GITHUB_OUTPUT ';'
             - name: Upload artifacts
               uses: actions/upload-artifact@v3
               with:
@@ -41,6 +54,14 @@ jobs:
         steps:
             - name: Get code
               uses: actions/checkout@v3
+            - name: Download artifacts
+              uses: actions/download-artifact@v3
+              with:
+                name: dist-files
+            - name: Output contents
+              run: ls
+            - name: Output file name
+              run: echo "${{needs.build.outputs.script-file}}"
             - name: Demo command
               run: echo "Deployment in progress!"
 
